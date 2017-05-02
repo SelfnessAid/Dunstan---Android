@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Dunstan</string>
+    <string name="app_first_step_up">First Time Setup</string>
+    <string name="door_name">Door\nName</string>
+</resources>
