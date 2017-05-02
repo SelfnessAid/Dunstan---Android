@@ -28,8 +28,6 @@ public class SplashActivity extends AppCompatActivity {
                 Intent i = new Intent(SplashActivity.this, FirstSetupActivity.class);
                 startActivity(i);
 
-                // close this activity
-                finish();
             }
         }, SPLASH_TIME_OUT);
     }

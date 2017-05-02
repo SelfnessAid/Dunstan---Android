@@ -22,7 +22,6 @@ public class SecurityQuestionActivity extends AppCompatActivity {
                 Intent i = new Intent(SecurityQuestionActivity.this, MainActivity.class);
                 startActivity(i);
 
-                finish();
             }
         });
     }

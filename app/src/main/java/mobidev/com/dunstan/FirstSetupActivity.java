@@ -20,7 +20,6 @@ public class FirstSetupActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(FirstSetupActivity.this, AddNewDoorActivity.class);
                 startActivity(i);
-                finish();
             }
         });
     }

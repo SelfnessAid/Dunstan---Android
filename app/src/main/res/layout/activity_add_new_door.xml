@@ -51,7 +51,7 @@
         android:id="@+id/door_name"
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:text="@string/door_name"
+        android:text="@string/global_door_name"
         android:textColor="@android:color/black"
         android:gravity="center"
         android:background="@drawable/rounded_corner"
