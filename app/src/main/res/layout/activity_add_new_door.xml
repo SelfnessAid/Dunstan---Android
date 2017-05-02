@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mobidev.com.dunstan.FirstSetupActivity"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/app_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_logo"
+        app:srcCompat="@drawable/underline_title"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="0dp"
+        android:scaleType="fitXY"/>
+
+    <ImageView
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/bottom"
+        android:layout_marginBottom="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/app_lock"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/lock"
+        android:layout_above="@+id/bottom"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:id="@+id/door_name"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="@string/door_name"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:background="@drawable/rounded_corner"
+        android:layout_above="@+id/bottom"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"/>
+
+    <TextView
+        android:id="@+id/new_door_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="New Door"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/door_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/app_lock"
+        android:layout_alignStart="@+id/app_lock"
+        android:layout_below="@+id/new_door_label"
+        android:layout_marginTop="20dp"
+        android:text="Door Name:"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/phone_no_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/door_name_label"
+        android:layout_alignStart="@+id/door_name_label"
+        android:layout_below="@+id/door_name_label"
+        android:layout_marginTop="10dp"
+        android:text="Door Phone No:"
+        android:textColor="@android:color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/door_code_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/phone_no_label"
+        android:layout_alignStart="@+id/phone_no_label"
+        android:layout_below="@+id/phone_no_label"
+        android:layout_marginTop="10dp"
+        android:text="@string/door_code"
+        android:textColor="@android:color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/app_password_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/door_code_label"
+        android:layout_alignStart="@+id/door_code_label"
+        android:layout_below="@+id/door_code_label"
+        android:layout_marginTop="20dp"
+        android:text="@string/app_password"
+        android:textColor="@android:color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/email_address_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/app_password_label"
+        android:layout_alignStart="@+id/app_password_label"
+        android:layout_below="@+id/app_password_label"
+        android:layout_marginTop="10dp"
+        android:text="Email Address:"
+        android:textColor="@android:color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/add_door_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email_address_label"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:text="@string/add"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/door_name_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/door_name_label"
+        android:layout_alignEnd="@+id/door_name"
+        android:layout_alignRight="@+id/door_name"
+        android:layout_alignTop="@+id/door_name_label"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_toEndOf="@+id/door_name_label"
+        android:layout_toRightOf="@+id/door_name_label"
+        android:background="@drawable/underline_textview"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/phone_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/phone_no_label"
+        android:layout_alignEnd="@+id/door_name_edit"
+        android:layout_alignRight="@+id/door_name_edit"
+        android:layout_alignTop="@+id/phone_no_label"
+        android:background="@drawable/underline_textview"
+        android:ems="10"
+        android:inputType="phone"
+        android:textColor="@android:color/black"
+        android:layout_toRightOf="@+id/phone_no_label"
+        android:layout_toEndOf="@+id/phone_no_label"
+        android:layout_marginLeft="10dp"/>
+
+    <EditText
+        android:id="@+id/door_code_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/door_code_label"
+        android:layout_alignEnd="@+id/phone_edit"
+        android:layout_alignRight="@+id/phone_edit"
+        android:layout_alignTop="@+id/door_code_label"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@+id/door_name_label"
+        android:layout_toRightOf="@+id/door_name_label"
+        android:background="@drawable/underline_textview"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/app_password_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/app_password_label"
+        android:layout_alignEnd="@+id/door_code_edit"
+        android:layout_alignRight="@+id/door_code_edit"
+        android:layout_alignTop="@+id/app_password_label"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/phone_no_label"
+        android:background="@drawable/underline_textview"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/email_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/email_address_label"
+        android:layout_alignEnd="@+id/app_password_edit"
+        android:layout_alignRight="@+id/app_password_edit"
+        android:layout_alignTop="@+id/email_address_label"
+        android:background="@drawable/underline_textview"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:textColor="@android:color/black"
+        android:layout_toRightOf="@+id/app_password_label"
+        android:layout_toEndOf="@+id/app_password_label"
+        android:layout_marginLeft="10dp"/>
+
+</RelativeLayout>

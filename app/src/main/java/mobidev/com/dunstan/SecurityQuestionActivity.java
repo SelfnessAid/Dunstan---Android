@@ -6,20 +6,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class FirstSetupActivity extends AppCompatActivity {
+import org.w3c.dom.Text;
 
-    TextView firstSetupTextView;
+public class SecurityQuestionActivity extends AppCompatActivity {
 
+    TextView continueBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_setup);
-        firstSetupTextView = (TextView)findViewById(R.id.first_step_btn);
-        firstSetupTextView.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_security_question);
+        continueBtn = (TextView) findViewById(R.id.continue_label);
+        continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(FirstSetupActivity.this, AddNewDoorActivity.class);
+                Intent i = new Intent(SecurityQuestionActivity.this, MainActivity.class);
                 startActivity(i);
+
                 finish();
             }
         });

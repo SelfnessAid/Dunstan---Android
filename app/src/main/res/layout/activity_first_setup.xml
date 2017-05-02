@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mobidev.com.dunstan.AddNewDoorActivity"
+    tools:context="mobidev.com.dunstan.FirstSetupActivity"
     android:background="@android:color/white">
 
     <ImageView
         android:id="@+id/app_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         app:srcCompat="@drawable/logo"
         android:layout_alignParentTop="true"
@@ -23,9 +23,10 @@
         android:layout_below="@+id/app_logo"
         app:srcCompat="@drawable/underline_title"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="0dp"
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/bottom"
@@ -38,10 +39,10 @@
 
     <ImageView
         android:id="@+id/app_setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:srcCompat="@drawable/settings"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="120dp"
         android:layout_below="@+id/app_title"
         android:layout_centerHorizontal="true" />
 
@@ -54,12 +55,13 @@
         android:layout_below="@+id/app_setting"
         android:layout_centerHorizontal="true"
         android:textSize="25dp"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:clickable="true"/>
 
     <ImageView
         android:id="@+id/app_lock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
         app:srcCompat="@drawable/lock"
         android:layout_above="@+id/bottom"
         android:layout_alignParentLeft="true"
@@ -67,15 +69,16 @@
         android:layout_marginLeft="15dp" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/door_name"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="@string/global_door_name"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:background="@drawable/rounded_corner"
         android:layout_above="@+id/bottom"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:text="TextView" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"/>
 
 </RelativeLayout>
