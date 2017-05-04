@@ -42,10 +42,11 @@
         android:layout_width="30dp"
         android:layout_height="40dp"
         app:srcCompat="@drawable/lock"
+        android:layout_marginLeft="13dp"
         android:layout_above="@+id/bottom"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="15dp" />
+        android:layout_marginStart="13dp" />
 
     <TextView
         android:id="@+id/door_name"
@@ -61,106 +62,123 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="13dp" />
 
-    <TextView
-        android:id="@+id/questions_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/app_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/security_question"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="20dp" />
-
-    <Spinner
-        android:id="@+id/first_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_above="@+id/app_lock"
+        android:layout_marginBottom="15dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/questions_label"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/custom_dropdown" />
+        android:layout_alignParentStart="true">
 
-    <Spinner
-        android:id="@+id/second_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/answer1"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/custom_dropdown"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/third_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/answer2"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/custom_dropdown"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+            <TextView
+                android:id="@+id/questions_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="@string/security_question"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/answer1"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:background="@drawable/underline_textview"
-        android:layout_below="@+id/first_spinner"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"/>
+            <Spinner
+                android:id="@+id/first_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/questions_label"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/custom_dropdown"/>
 
-    <EditText
-        android:id="@+id/answer2"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/second_spinner"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/underline_textview"/>
+            <Spinner
+                android:id="@+id/second_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/answer1"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_dropdown"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
 
-    <EditText
-        android:id="@+id/answer3"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_below="@+id/third_spinner"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/underline_textview"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"/>
+            <Spinner
+                android:id="@+id/third_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/answer2"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_dropdown"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
 
-    <TextView
-        android:id="@+id/continue_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/answer3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="@string/continue_string"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="20sp" />
+            <EditText
+                android:id="@+id/answer1"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/underline_textview"
+                android:layout_below="@+id/first_spinner"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:id="@+id/answer2"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/second_spinner"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/underline_textview"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:id="@+id/answer3"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:layout_below="@+id/third_spinner"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/underline_textview"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/continue_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/answer3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:text="@string/continue_string"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

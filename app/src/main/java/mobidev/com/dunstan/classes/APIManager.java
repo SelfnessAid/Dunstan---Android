@@ -3,6 +3,7 @@ package mobidev.com.dunstan.classes;
 import android.content.Context;
 import android.text.Editable;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,8 +37,11 @@ public class APIManager {
     private Context context;
 
     private static final int KEY_REQUEST_REGISTER = 599001;
+    private static final int KEY_SAVE_ANSWERS = 599002;
 
     private static final String URL_ADDNEWDOOR = "http://52.56.190.147/api/v1/account/sign_up";
+    private static final String URL_GETQUESTOINS = "http://52.56.190.147/api/v1/account/security_questions";
+    private static final String URL_SAVE_ANSWER = "http://52.56.190.147/api/v1/account/security_answer";
 
     private OkHttpClient client;
 
@@ -58,6 +62,17 @@ public class APIManager {
             jsonObject.put("password", password);
             jsonObject.put("door_name", name);
             this.requestParam(jsonObject, URL_ADDNEWDOOR, KEY_REQUEST_REGISTER, listener);
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveAnswers(String token, JSONArray answers, final APISuccessListener listener){
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("token", token);
+            jsonObject.put("answers", answers);
+            this.requestParam(jsonObject, URL_SAVE_ANSWER, KEY_SAVE_ANSWERS, listener);
         }catch (JSONException e) {
             e.printStackTrace();
         }
@@ -98,12 +113,9 @@ public class APIManager {
 //        }
 //    }
 //
-//    public void getUserInfo(String phone, boolean flag, final APISuccessListener listener){
-//        String url = URL_BASE;
-//        url += (flag)?URL_Get_User_Information_WithTenant:URL_Get_User_Information_WithPrequalTenant;
-//        url += phone;
-//        this.getRequestAPICall(url, KEY_GET_USERINFO, listener);
-//    }
+    public void getQuestions(final APISuccessListener listener){
+        this.getRequestAPICall(URL_GETQUESTOINS, listener);
+    }
 //
 //    public void setUserInfo(Boolean isUpdated, String phone, String deviceToken, String first, String last, String street, String city, String state, String zip, String apt, final APISuccessListener listener) {
 //        String url = URL_BASE;
@@ -210,6 +222,7 @@ public class APIManager {
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     switch (key){
+                        case KEY_SAVE_ANSWERS:
                         case KEY_REQUEST_REGISTER:
                         {
                             try {
@@ -231,7 +244,7 @@ public class APIManager {
     }
 
     //GET
-    public void getRequestAPICall(String url, final int key, final APISuccessListener listener) {
+    public void getRequestAPICall(String url, final APISuccessListener listener) {
         Request request = new Request.Builder()
                 .url(url)
                 .get()

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,6 +51,7 @@ public class AddNewDoorActivity extends AppCompatActivity {
         emailEdit.setText("man@test.com");
 
         dialog = new ProgressDialog(AddNewDoorActivity.this);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +80,7 @@ public class AddNewDoorActivity extends AppCompatActivity {
                 }
 
                 dialog.show();
+                dialog.setContentView(R.layout.custom_progress_dialog);
 
                 APIManager.getInstance().addNewDoor(nameStr, phoneStr, codeStr, passwordStr, emailStr, new APIManager.APISuccessListener() {
                     @Override
