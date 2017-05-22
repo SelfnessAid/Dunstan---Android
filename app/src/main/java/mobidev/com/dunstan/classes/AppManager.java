@@ -22,4 +22,6 @@ public class AppManager extends Application{
     public ArrayList<Question> getQuestions() {
         return questions;
     }
+
+    public ArrayList<Door> getDoors() {return doors;}
 }

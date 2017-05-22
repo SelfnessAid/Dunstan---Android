@@ -30,6 +30,7 @@ public class AddNewDoorActivity extends AppCompatActivity {
     TextView addBtn;
     EditText doorNameEdit, phoneEdit, doorCodeEdit, passwordEdit, emailEdit;
     ProgressDialog dialog;
+    String errorStr = "";
 
 
     @Override
@@ -50,7 +51,7 @@ public class AddNewDoorActivity extends AppCompatActivity {
         passwordEdit.setText("password");
         emailEdit.setText("man@test.com");
 
-        dialog = new ProgressDialog(AddNewDoorActivity.this);
+        dialog = new ProgressDialog(AddNewDoorActivity.this, R.style.MyAlertDialogStyle);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +87,13 @@ public class AddNewDoorActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(String error) {
                         dialog.dismiss();
-                        showAlert("Notice", error);
+                        errorStr = error;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                showAlert("Notice", errorStr);
+                            }
+                        });
                     }
 
                     @Override
@@ -110,15 +117,37 @@ public class AddNewDoorActivity extends AppCompatActivity {
                                         startActivity(i);
                                     }
                                 } else {
-                                    showAlert("Error", resultString);
+                                    errorStr = resultString;
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            showAlert("Notice", errorStr);
+                                        }
+                                    });
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                showAlert("Error", e.getLocalizedMessage());
+                                try {
+                                    errorStr = new JSONObject(res).getString("error");
+                                } catch (JSONException e1) {
+                                    e1.printStackTrace();
+                                }
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showAlert("Notice", errorStr);
+                                    }
+                                });
                             }
                         } catch (IOException e) {
                             e.printStackTrace();
-                            showAlert("Error", e.getLocalizedMessage());
+                            errorStr = e.getLocalizedMessage();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    showAlert("Notice", errorStr);
+                                }
+                            });
                         }
                     }
                 });
@@ -139,7 +168,6 @@ public class AddNewDoorActivity extends AppCompatActivity {
                         // continue with delete
                     }
                 })
-                .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
     }
 }

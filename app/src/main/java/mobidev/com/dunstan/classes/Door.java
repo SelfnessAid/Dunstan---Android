@@ -6,4 +6,5 @@ public class Door {
     public String code = "";
     public String state = "";
     public String name = "";
+    public String password = "";
 }

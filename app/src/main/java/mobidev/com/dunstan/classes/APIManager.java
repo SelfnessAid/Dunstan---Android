@@ -39,9 +39,10 @@ public class APIManager {
     private static final int KEY_REQUEST_REGISTER = 599001;
     private static final int KEY_SAVE_ANSWERS = 599002;
 
-    private static final String URL_ADDNEWDOOR = "http://52.56.190.147/api/v1/account/sign_up";
-    private static final String URL_GETQUESTOINS = "http://52.56.190.147/api/v1/account/security_questions";
+    private static final String URL_ADD_NEWDOOR = "http://52.56.190.147/api/v1/account/sign_up";
+    private static final String URL_GET_QUESTOINS = "http://52.56.190.147/api/v1/account/security_questions";
     private static final String URL_SAVE_ANSWER = "http://52.56.190.147/api/v1/account/security_answer";
+    private static final String URL_GET_DOORS = "http://52.56.190.147/api/v1/account/doors";
 
     private OkHttpClient client;
 
@@ -61,7 +62,7 @@ public class APIManager {
             jsonObject.put("keypad_code", code);
             jsonObject.put("password", password);
             jsonObject.put("door_name", name);
-            this.requestParam(jsonObject, URL_ADDNEWDOOR, KEY_REQUEST_REGISTER, listener);
+            this.requestParam(jsonObject, URL_ADD_NEWDOOR, KEY_REQUEST_REGISTER, listener);
         }catch (JSONException e) {
             e.printStackTrace();
         }
@@ -114,7 +115,12 @@ public class APIManager {
 //    }
 //
     public void getQuestions(final APISuccessListener listener){
-        this.getRequestAPICall(URL_GETQUESTOINS, listener);
+        this.getRequestAPICall(URL_GET_QUESTOINS, listener);
+    }
+
+    public void getDoors(String token, final APISuccessListener listener) {
+        String url = URL_GET_DOORS + "?token=" + token;
+        this.getRequestAPICall(url, listener);
     }
 //
 //    public void setUserInfo(Boolean isUpdated, String phone, String deviceToken, String first, String last, String street, String city, String state, String zip, String apt, final APISuccessListener listener) {

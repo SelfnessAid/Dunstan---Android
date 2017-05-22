@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -37,6 +38,7 @@ public class SecurityQuestionActivity extends AppCompatActivity {
     ProgressDialog dialog;
     ArrayAdapter<String> adapter;
     JSONArray answers = new JSONArray();
+    String errorStr = "";
 
     private ArrayList<String> questions = new ArrayList<String>();
 
@@ -53,10 +55,10 @@ public class SecurityQuestionActivity extends AppCompatActivity {
         answer2 = (EditText) findViewById(R.id.answer2);
         answer3 = (EditText) findViewById(R.id.answer3);
 
-        dialog = new ProgressDialog(this);
+        dialog = new ProgressDialog(this, R.style.MyAlertDialogStyle);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        getDoors();
+        getQuestions();
 
         adapter = new ArrayAdapter<String>(this, R.layout.custom_spinner_item, questions);
         adapter.setDropDownViewResource(R.layout.custom_spinner_item);
@@ -82,7 +84,13 @@ public class SecurityQuestionActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(String error) {
                         dialog.dismiss();
-                        showAlert("Notice", error);
+                        errorStr = error;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                showAlert("Notice", errorStr);
+                            }
+                        });
                     }
 
                     @Override
@@ -97,20 +105,40 @@ public class SecurityQuestionActivity extends AppCompatActivity {
                                     Intent i = new Intent(SecurityQuestionActivity.this, MainActivity.class);
                                     startActivity(i);
                                 } else {
-                                    showAlert("Error", resultString);
+                                    errorStr = resultString;
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            showAlert("Notice", errorStr);
+                                        }
+                                    });
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                showAlert("Error", e.getLocalizedMessage());
+                                try {
+                                    errorStr = new JSONObject(res).getString("error");
+                                } catch (JSONException e1) {
+                                    e1.printStackTrace();
+                                }
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showAlert("Notice", errorStr);
+                                    }
+                                });
                             }
                         } catch (IOException e) {
                             e.printStackTrace();
-                            showAlert("Error", e.getLocalizedMessage());
+                            errorStr = e.getLocalizedMessage();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    showAlert("Notice", errorStr);
+                                }
+                            });
                         }
                     }
                 });
-                Intent i = new Intent(SecurityQuestionActivity.this, MainActivity.class);
-                startActivity(i);
             }
         });
     }
@@ -154,7 +182,7 @@ public class SecurityQuestionActivity extends AppCompatActivity {
         return true;
     }
 
-    private void getDoors(){
+    private void getQuestions(){
         dialog.show();
         dialog.setContentView(R.layout.custom_progress_dialog);
         APIManager.getInstance().getQuestions(new APIManager.APISuccessListener() {
@@ -224,7 +252,6 @@ public class SecurityQuestionActivity extends AppCompatActivity {
                         // continue with delete
                     }
                 })
-                .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
     }
 
